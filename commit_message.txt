@@ -1,0 +1,10 @@
+Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(setup): Initial commit: Project README
+
+Created foundational README documenting the project purpose and scope for MolFormer 
+fine-tuning on molecular property prediction tasks. This establishes the project's identity 
+as a chemical language model fine-tuning demonstration using transfer learning techniques.
+
+The README outlines the high-level goal: fine-tuning pre-trained MolFormer models for 
+lipophilicity prediction using masked language modeling and regression objectives.
+
+Verification: README.md created with project overview.
