@@ -1,10 +1,15 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(setup): Initial commit: Project README
+Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(setup): Add requirements.txt with core ML dependencies
 
-Created foundational README documenting the project purpose and scope for MolFormer 
-fine-tuning on molecular property prediction tasks. This establishes the project's identity 
-as a chemical language model fine-tuning demonstration using transfer learning techniques.
+Added Python dependency specifications for the project including PyTorch, Transformers,
+Datasets, pandas, numpy, scikit-learn, and jupyter. These dependencies form the foundation
+for molecular property prediction using chemical language models.
 
-The README outlines the high-level goal: fine-tuning pre-trained MolFormer models for 
-lipophilicity prediction using masked language modeling and regression objectives.
+Dependencies chosen:
+- torch>=2.0.0: Core deep learning framework
+- transformers>=4.30.0: HuggingFace models including MolFormer
+- datasets>=2.12.0: Dataset loading and processing
+- pandas, numpy: Data manipulation
+- scikit-learn: ML utilities and metrics
+- jupyter: Interactive development
 
-Verification: README.md created with project overview.
+Verification: requirements.txt created with 7 core dependencies.
