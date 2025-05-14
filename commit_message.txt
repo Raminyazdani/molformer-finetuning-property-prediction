@@ -1,15 +1,13 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(setup): Add requirements.txt with core ML dependencies
+Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(setup): Add .gitignore for Python project
 
-Added Python dependency specifications for the project including PyTorch, Transformers,
-Datasets, pandas, numpy, scikit-learn, and jupyter. These dependencies form the foundation
-for molecular property prediction using chemical language models.
+Configured version control to exclude Python artifacts and generated files including
+bytecode, virtual environments, Jupyter checkpoints, IDE configurations, and output files.
 
-Dependencies chosen:
-- torch>=2.0.0: Core deep learning framework
-- transformers>=4.30.0: HuggingFace models including MolFormer
-- datasets>=2.12.0: Dataset loading and processing
-- pandas, numpy: Data manipulation
-- scikit-learn: ML utilities and metrics
-- jupyter: Interactive development
+This prevents committing:
+- Python bytecode (*.pyc, __pycache__)
+- Virtual environments (.venv, venv)
+- Jupyter checkpoints (.ipynb_checkpoints)
+- IDE files (.vscode, .idea)
+- Data and model files (handled separately)
 
-Verification: requirements.txt created with 7 core dependencies.
+Verification: .gitignore created with comprehensive Python patterns.
