@@ -1,13 +1,13 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(setup): Add .gitignore for Python project
+Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(structure): Create organized directory structure for ML project
 
-Configured version control to exclude Python artifacts and generated files including
-bytecode, virtual environments, Jupyter checkpoints, IDE configurations, and output files.
+Established professional directory structure for the machine learning project with clear
+separation of concerns:
+- notebooks/: Jupyter notebooks for experiments and demonstrations
+- models/: Trained model checkpoints and tokenizers
+- data/: Dataset storage (with .gitkeep for tracking)
+- outputs/: Predictions and results (with .gitkeep for tracking)
 
-This prevents committing:
-- Python bytecode (*.pyc, __pycache__)
-- Virtual environments (.venv, venv)
-- Jupyter checkpoints (.ipynb_checkpoints)
-- IDE files (.vscode, .idea)
-- Data and model files (handled separately)
+This organization follows ML project best practices and improves code maintainability.
+Empty directories include .gitkeep files to ensure they're tracked in version control.
 
-Verification: .gitignore created with comprehensive Python patterns.
+Verification: Created 4 directories, added 2 .gitkeep files.
