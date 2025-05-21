@@ -1,13 +1,15 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(structure): Create organized directory structure for ML project
+Ramin Yazdani | molformer-finetuning-property-prediction | main | WIP(docs): Update README with repository structure
 
-Established professional directory structure for the machine learning project with clear
-separation of concerns:
-- notebooks/: Jupyter notebooks for experiments and demonstrations
-- models/: Trained model checkpoints and tokenizers
-- data/: Dataset storage (with .gitkeep for tracking)
-- outputs/: Predictions and results (with .gitkeep for tracking)
+Added "Repository Structure" section to README documenting the purpose of each directory
+and the overall project organization. This helps new users understand where to find files
+and where to place generated outputs.
 
-This organization follows ML project best practices and improves code maintainability.
-Empty directories include .gitkeep files to ensure they're tracked in version control.
+Documentation includes:
+- Directory tree visualization
+- Purpose description for each folder
+- File type expectations
 
-Verification: Created 4 directories, added 2 .gitkeep files.
+This documentation is added while the structure is fresh in mind, before adding actual
+content to these directories.
+
+Verification: README.md updated with structure section.
