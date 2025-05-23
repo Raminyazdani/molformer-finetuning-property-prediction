@@ -17,3 +17,28 @@ molformer-finetuning-property-prediction/
 ├── requirements.txt   # Python dependencies
 └── README.md         # This file
 ```
+
+## Setup / Installation
+
+### Prerequisites
+- Python 3.8 or higher
+- CUDA-capable GPU (recommended)
+- 8GB+ RAM
+
+### Installation Steps
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Raminyazdani/molformer-finetuning-property-prediction.git
+cd molformer-finetuning-property-prediction
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Start Jupyter Notebook:
+```bash
+jupyter notebook
+```

@@ -1,15 +1,17 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | WIP(docs): Update README with repository structure
+Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(docs): Add installation and setup instructions to README
 
-Added "Repository Structure" section to README documenting the purpose of each directory
-and the overall project organization. This helps new users understand where to find files
-and where to place generated outputs.
+Added comprehensive setup section with prerequisites, installation steps, and usage
+guidance for both Windows and Linux environments. This makes the project immediately
+usable for new contributors or users.
 
-Documentation includes:
-- Directory tree visualization
-- Purpose description for each folder
-- File type expectations
+Setup instructions include:
+- Python version requirements (3.8+)
+- Virtual environment creation
+- Dependency installation from requirements.txt
+- GPU/CUDA setup notes
+- Notebook execution order
 
-This documentation is added while the structure is fresh in mind, before adding actual
-content to these directories.
+Making the project accessible is critical for portfolio presentation and open-source
+collaboration.
 
-Verification: README.md updated with structure section.
+Verification: README.md enhanced with setup instructions.
