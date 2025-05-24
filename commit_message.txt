@@ -1,17 +1,16 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(docs): Add installation and setup instructions to README
+Ramin Yazdani | molformer-finetuning-property-prediction | main | WIP(training): Add initial MLM fine-tuning notebook with data loading
 
-Added comprehensive setup section with prerequisites, installation steps, and usage
-guidance for both Windows and Linux environments. This makes the project immediately
-usable for new contributors or users.
+Created mlm_regression_training.ipynb with foundational imports and data loading logic
+for the Lipophilicity dataset from MoleculeNet. This establishes the data pipeline before
+adding model complexity.
 
-Setup instructions include:
-- Python version requirements (3.8+)
-- Virtual environment creation
-- Dependency installation from requirements.txt
-- GPU/CUDA setup notes
-- Notebook execution order
+Notebook includes:
+- Library imports (torch, transformers, datasets, pandas)
+- HuggingFace datasets loading
+- Data exploration and validation
+- Train/test split preparation
 
-Making the project accessible is critical for portfolio presentation and open-source
-collaboration.
+Starting with data loading allows validation of the pipeline before introducing model
+training overhead. This incremental approach reduces debugging complexity.
 
-Verification: README.md enhanced with setup instructions.
+Verification: Created notebooks/mlm_regression_training.ipynb with data pipeline.
