@@ -1,16 +1,17 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | WIP(training): Add initial MLM fine-tuning notebook with data loading
+Ramin Yazdani | molformer-finetuning-property-prediction | main | WIP(training): Add MolFormer model initialization and tokenizer setup
 
-Created mlm_regression_training.ipynb with foundational imports and data loading logic
-for the Lipophilicity dataset from MoleculeNet. This establishes the data pipeline before
-adding model complexity.
+Extended MLM training notebook with MolFormer model and tokenizer initialization from
+HuggingFace. The model is loaded in its pre-trained state, ready for fine-tuning on the
+molecular property prediction task.
 
-Notebook includes:
-- Library imports (torch, transformers, datasets, pandas)
-- HuggingFace datasets loading
-- Data exploration and validation
-- Train/test split preparation
+Added components:
+- MolFormer model loading from 'ibm/MolFormer-XL-both-10pct'
+- Tokenizer initialization for SMILES strings
+- Model configuration for regression heads
+- Device placement (GPU/CPU)
 
-Starting with data loading allows validation of the pipeline before introducing model
-training overhead. This incremental approach reduces debugging complexity.
+This validates the model loading pipeline before implementing the training loop, ensuring
+compatibility with the dataset format and avoiding wasted training time on configuration
+issues.
 
-Verification: Created notebooks/mlm_regression_training.ipynb with data pipeline.
+Verification: Notebook extended with model initialization code.
