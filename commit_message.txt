@@ -1,17 +1,13 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | WIP(training): Add MolFormer model initialization and tokenizer setup
+Ramin Yazdani | molformer-finetuning-property-prediction | main | WIP(training): Document model save path issue
 
-Extended MLM training notebook with MolFormer model and tokenizer initialization from
-HuggingFace. The model is loaded in its pre-trained state, ready for fine-tuning on the
-molecular property prediction task.
+During code review of the training notebook, noticed a typo in the model save path:
+'mlm_finetuend_molformer' instead of 'mlm_finetuned_molformer' (missing 't' in 'finetuned').
 
-Added components:
-- MolFormer model loading from 'ibm/MolFormer-XL-both-10pct'
-- Tokenizer initialization for SMILES strings
-- Model configuration for regression heads
-- Device placement (GPU/CPU)
+Added a "Known Issues" section to README documenting this typo that needs fixing. This
+path would cause FileNotFoundError when attempting to save or load the trained model.
 
-This validates the model loading pipeline before implementing the training loop, ensuring
-compatibility with the dataset format and avoiding wasted training time on configuration
-issues.
+This is a realistic scenario: fast typing or copy-paste errors during rapid development.
+The issue was caught during visual code review before executing the training, preventing
+a runtime failure.
 
-Verification: Notebook extended with model initialization code.
+Verification: README.md updated with known issues section noting the typo.

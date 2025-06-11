@@ -12,11 +12,16 @@ This project demonstrates transfer learning with pre-trained chemical language m
 molformer-finetuning-property-prediction/
 ├── notebooks/          # Jupyter notebooks
 ├── models/            # Trained models and tokenizers
+│   └── mlm_finetuend_molformer/  # Note: Contains typo in path name
 ├── data/              # Dataset directory
 ├── outputs/           # Results and predictions
 ├── requirements.txt   # Python dependencies
 └── README.md         # This file
 ```
+
+## Known Issues
+
+- Model save path contains typo: `mlm_finetuend_molformer` (should be `mlm_finetuned_molformer`)
 
 ## Setup / Installation
 
