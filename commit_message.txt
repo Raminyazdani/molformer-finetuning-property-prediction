@@ -1,16 +1,17 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(training): Fix model path typo: mlm_finetuend_molformer → mlm_finetuned_molformer
+Ramin Yazdani | molformer-finetuning-property-prediction | main | WIP(training): Add MLM and regression training loop
 
-Corrected the model path typo throughout the training notebook, changing all references
-from 'mlm_finetuend_molformer' to 'mlm_finetuned_molformer'. This ensures the model save
-and load operations will work correctly.
+Implemented the core training loop combining masked language modeling (MLM) and 
+regression objectives for fine-tuning MolFormer on the Lipophilicity dataset.
 
-Changes made:
-- Updated model save path in training cell
-- Updated corresponding load path references
-- Removed "Known Issues" section from README
-- Added comment noting the fix
+Training implementation:
+- Dual objective: MLM for language understanding + regression for property prediction
+- Adam optimizer with learning rate scheduling
+- Training loop with gradient accumulation
+- Loss tracking and logging
+- Initial batch size: 32
 
-The path now matches the actual directory structure that will be created during training.
-This quick fix prevents runtime errors and demonstrates professional error recovery.
+This is the core functionality of the project, demonstrating transfer learning on chemical
+language models. The implementation combines pre-training techniques (MLM) with task-specific
+fine-tuning (regression) for enhanced performance.
 
-Verification: All path references corrected, README cleaned up.
+Verification: Training loop implemented, ready for execution.
