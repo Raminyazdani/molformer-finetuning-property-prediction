@@ -43,3 +43,9 @@ pip install -r requirements.txt
 ```bash
 jupyter notebook
 ```
+
+
+## Development Notes
+
+- Initial batch size of 32 is causing CUDA out of memory errors during training
+- Will need to reduce batch size in next commit

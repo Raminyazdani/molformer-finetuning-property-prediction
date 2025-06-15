@@ -1,17 +1,14 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | WIP(training): Add MLM and regression training loop
+Ramin Yazdani | molformer-finetuning-property-prediction | main | WIP(training): Note: Training fails with batch size 32 (OOM error)
 
-Implemented the core training loop combining masked language modeling (MLM) and 
-regression objectives for fine-tuning MolFormer on the Lipophilicity dataset.
+Discovered during training execution that batch size 32 causes CUDA out of memory error
+on the available GPU. The error occurs during forward pass:
 
-Training implementation:
-- Dual objective: MLM for language understanding + regression for property prediction
-- Adam optimizer with learning rate scheduling
-- Training loop with gradient accumulation
-- Loss tracking and logging
-- Initial batch size: 32
+  RuntimeError: CUDA out of memory. Tried to allocate X.XX GiB
+  
+This is extremely common in transformer model training. MolFormer-XL is a large model and
+batch size 32 exceeds GPU memory capacity (likely 16GB or less).
 
-This is the core functionality of the project, demonstrating transfer learning on chemical
-language models. The implementation combines pre-training techniques (MLM) with task-specific
-fine-tuning (regression) for enhanced performance.
+Documented the issue before fixing to maintain realistic debugging narrative. The batch
+size needs to be reduced to fit within hardware constraints.
 
-Verification: Training loop implemented, ready for execution.
+Verification: Issue documented in notebook comment.
