@@ -1,15 +1,17 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(training): Fix OOM: Reduce batch size from 32 to 16
+Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(training): Add model checkpointing and evaluation metrics
 
-Reduced training batch size from 32 to 16 to fit within GPU memory constraints, resolving
-the CUDA out of memory error. Added explanatory comment about GPU memory limits.
+Completed the training pipeline by adding model/tokenizer saving, evaluation metrics,
+and configuration files. This represents a complete working implementation of the MLM
+fine-tuning approach.
 
-Changes:
-- batch_size: 32 → 16
-- Added comment: "Reduced from 32 due to GPU memory constraints"
-- Adjusted gradient accumulation if needed
+Added functionality:
+- Model saving to ./models/mlm_finetuned_molformer/
+- Tokenizer saving to ./models/mlm_finetuned_tokenizer/
+- Evaluation metrics (RMSE, MAE, R²)
+- Predictions saved to ./outputs/predictions.csv
+- Model configuration files (config.json)
 
-This is a standard fix in transformer training. Batch size 16 is reasonable for fine-tuning
-large language models on consumer/research GPUs. The reduced batch size may increase training
-time slightly but ensures successful execution.
+The training notebook is now a complete end-to-end pipeline from data loading to trained
+model output. This milestone delivers the first major project component.
 
-Verification: Batch size updated, training can proceed without OOM errors.
+Verification: Model saving implemented, predictions generated, config files created.
