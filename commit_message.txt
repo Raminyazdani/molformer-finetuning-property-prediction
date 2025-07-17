@@ -1,17 +1,17 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(training): Add model checkpointing and evaluation metrics
+Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(influence): Add influence function-based data selection using LiSSA
 
-Completed the training pipeline by adding model/tokenizer saving, evaluation metrics,
-and configuration files. This represents a complete working implementation of the MLM
-fine-tuning approach.
+Implemented influence_based_selection.ipynb demonstrating advanced research-level
+technique for selecting high-value training samples from external datasets using influence
+functions approximated via LiSSA (Linear time Stochastic Second-order Algorithm).
 
-Added functionality:
-- Model saving to ./models/mlm_finetuned_molformer/
-- Tokenizer saving to ./models/mlm_finetuned_tokenizer/
-- Evaluation metrics (RMSE, MAE, R²)
-- Predictions saved to ./outputs/predictions.csv
-- Model configuration files (config.json)
+Notebook implements:
+- LiSSA algorithm for influence function approximation
+- Gradient computation for training samples
+- Influence score calculation for external data points
+- High-influence sample selection
+- Integration with fine-tuned MolFormer from previous step
 
-The training notebook is now a complete end-to-end pipeline from data loading to trained
-model output. This milestone delivers the first major project component.
+This demonstrates sophisticated ML research techniques beyond standard fine-tuning,
+showcasing understanding of training dynamics and data selection strategies.
 
-Verification: Model saving implemented, predictions generated, config files created.
+Verification: Created notebooks/influence_based_selection.ipynb with LiSSA implementation.
