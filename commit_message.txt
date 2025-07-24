@@ -1,17 +1,17 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(influence): Add influence function-based data selection using LiSSA
+Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(exploration): Add exploration notebook for alternative strategies
 
-Implemented influence_based_selection.ipynb demonstrating advanced research-level
-technique for selecting high-value training samples from external datasets using influence
-functions approximated via LiSSA (Linear time Stochastic Second-order Algorithm).
+Created exploration_finetuning_methods.ipynb for experimenting with alternative data
+selection strategies and fine-tuning approaches. This notebook serves as a comparison
+framework for different methodologies.
 
-Notebook implements:
-- LiSSA algorithm for influence function approximation
-- Gradient computation for training samples
-- Influence score calculation for external data points
-- High-influence sample selection
-- Integration with fine-tuned MolFormer from previous step
+Exploration includes:
+- Alternative data selection methods
+- Different fine-tuning strategies
+- Comparison of approaches
+- Experimental variations
 
-This demonstrates sophisticated ML research techniques beyond standard fine-tuning,
-showcasing understanding of training dynamics and data selection strategies.
+This demonstrates scientific rigor: comparing multiple approaches rather than assuming
+a single method is optimal. The exploration framework supports reproducible research and
+ablation studies.
 
-Verification: Created notebooks/influence_based_selection.ipynb with LiSSA implementation.
+Verification: Created notebooks/exploration_finetuning_methods.ipynb.
