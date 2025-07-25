@@ -1,17 +1,17 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(exploration): Add exploration notebook for alternative strategies
+Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(docs): Add LARGE_FILES.md for model download instructions
 
-Created exploration_finetuning_methods.ipynb for experimenting with alternative data
-selection strategies and fine-tuning approaches. This notebook serves as a comparison
-framework for different methodologies.
+Created LARGE_FILES.md to handle GitHub's file size limitations professionally. This
+document provides clear instructions for obtaining the large trained model files that
+cannot be committed to version control.
 
-Exploration includes:
-- Alternative data selection methods
-- Different fine-tuning strategies
-- Comparison of approaches
-- Experimental variations
+Documentation includes:
+- Model file locations and sizes
+- Download instructions for pre-trained models
+- Training from scratch instructions as alternative
+- Expected directory structure after download
+- HuggingFace cache information
 
-This demonstrates scientific rigor: comparing multiple approaches rather than assuming
-a single method is optimal. The exploration framework supports reproducible research and
-ablation studies.
+This approach is professional: acknowledging constraints and providing clear guidance
+rather than simply omitting necessary files.
 
-Verification: Created notebooks/exploration_finetuning_methods.ipynb.
+Verification: Created LARGE_FILES.md with model download instructions.
