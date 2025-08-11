@@ -1,17 +1,17 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(docs): Add LARGE_FILES.md for model download instructions
+Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(docs): Add comprehensive troubleshooting guide to README
 
-Created LARGE_FILES.md to handle GitHub's file size limitations professionally. This
-document provides clear instructions for obtaining the large trained model files that
-cannot be committed to version control.
+Enhanced README with extensive troubleshooting section based on issues encountered during
+development. This anticipates common user problems and provides solutions.
 
-Documentation includes:
-- Model file locations and sizes
-- Download instructions for pre-trained models
-- Training from scratch instructions as alternative
-- Expected directory structure after download
-- HuggingFace cache information
+Troubleshooting covers:
+- CUDA/GPU issues and CPU fallback
+- Out of memory errors and batch size adjustment
+- Missing datasets and download instructions
+- Import errors and dependency installation
+- Path issues in different environments
+- Google Colab compatibility notes
 
-This approach is professional: acknowledging constraints and providing clear guidance
-rather than simply omitting necessary files.
+This documentation significantly improves user experience by addressing predictable failure
+modes. The troubleshooting content comes from actual development experience with the project.
 
-Verification: Created LARGE_FILES.md with model download instructions.
+Verification: README.md updated with troubleshooting section.
