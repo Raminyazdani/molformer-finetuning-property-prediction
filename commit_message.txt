@@ -1,17 +1,16 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(docs): Add comprehensive troubleshooting guide to README
+Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(refactor): Refactor notebooks to use relative paths
 
-Enhanced README with extensive troubleshooting section based on issues encountered during
-development. This anticipates common user problems and provides solutions.
+Refactored all notebooks to use relative paths instead of absolute Google Colab paths,
+making the project portable across environments. This major refactoring improves
+maintainability and supports local development.
 
-Troubleshooting covers:
-- CUDA/GPU issues and CPU fallback
-- Out of memory errors and batch size adjustment
-- Missing datasets and download instructions
-- Import errors and dependency installation
-- Path issues in different environments
-- Google Colab compatibility notes
+Changes across notebooks:
+- Replaced all /content/drive/... absolute paths with ./models/, ./data/, ./outputs/
+- Commented out drive.mount() calls with explanatory notes
+- Updated .gitignore with enhanced patterns
+- Verified all path references
 
-This documentation significantly improves user experience by addressing predictable failure
-modes. The troubleshooting content comes from actual development experience with the project.
+This ensures the project works correctly on local machines, cloud VMs, or any environment,
+not just Google Colab. Portability is critical for a portfolio project.
 
-Verification: README.md updated with troubleshooting section.
+Verification: All notebooks updated, paths are relative, Colab code commented.
