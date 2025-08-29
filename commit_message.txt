@@ -1,16 +1,13 @@
-Ramin Yazdani | molformer-finetuning-property-prediction | main | feat(refactor): Refactor notebooks to use relative paths
+Ramin Yazdani | molformer-finetuning-property-prediction | main | WIP(refactor): TODO: Check influence notebook for remaining paths
 
-Refactored all notebooks to use relative paths instead of absolute Google Colab paths,
-making the project portable across environments. This major refactoring improves
-maintainability and supports local development.
+During testing after the bulk path refactoring, realized there might be remaining absolute
+paths in the influence notebook that were missed during the find-and-replace operation.
 
-Changes across notebooks:
-- Replaced all /content/drive/... absolute paths with ./models/, ./data/, ./outputs/
-- Commented out drive.mount() calls with explanatory notes
-- Updated .gitignore with enhanced patterns
-- Verified all path references
+Added TODO comment to check the influence_based_selection.ipynb thoroughly for any paths
+that were not caught in the bulk refactoring. This is a realistic scenario: bulk changes
+often miss edge cases that have slightly different formats or contexts.
 
-This ensures the project works correctly on local machines, cloud VMs, or any environment,
-not just Google Colab. Portability is critical for a portfolio project.
+Manual code review and testing after automated refactoring is best practice for catching
+these types of issues.
 
-Verification: All notebooks updated, paths are relative, Colab code commented.
+Verification: TODO comment added for manual review.
