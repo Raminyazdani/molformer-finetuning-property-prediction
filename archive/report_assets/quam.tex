@@ -1,0 +1,336 @@
+\documentclass[9pt,twocolumn,twoside]{article} %210 mm × 297 mm
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[a4paper,left=1.5cm, right=1.5cm, top=2cm, bottom=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{blindtext}
+\usepackage{multirow}
+\usepackage{mhchem}
+\usepackage{url}
+\usepackage{subfigure}
+\usepackage{amsfonts,latexsym} % Provides access to various symbols
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{threeparttable}
+\usepackage{array,colortbl}
+\usepackage{ifpdf}
+\usepackage{rotating}
+\usepackage{cite}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{wrapfig}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{nccmath}
+\usepackage{rotating}
+% \documentclass{article}
+\usepackage{booktabs} % For better table formatting
+\usepackage{tabularx} % Ensures equal table widths
+\usepackage{float} % Allows [H] placement
+
+\newcommand{\titletext}{Fine-Tuning Transformer-Based Chemical Language Models for Lipophilicity Prediction}
+\newcommand{\authorname}{Gopal Mengi(7071538), Rumman Ali(7072982), Ramin Yazdani(7068679)}
+\newcommand{\faculty}{\textbf{Department of Computer Science}}
+% \newcommand{\abstracttext}{Lipophilicity, quantified by the logarithm of the partition coefficient (logP), is a critical physicochemical property in drug discovery, influencing a molecule's absorption, distribution, metabolism, and excretion (ADME) properties. Accurate prediction of logP is essential for optimizing drug candidates and reducing experimental costs. In this project, we fine-tune a machine learning model on the MoleculeNet Lipophilicity dataset, which contains experimentally measured logP values for 4,200 unique molecules represented as SMILES strings. We leverage molecular descriptors and advanced cheminformatics tools to preprocess the data and train a model capable of predicting logP with high accuracy. The fine-tuned model is evaluated using standard regression metrics and compared against baseline models to demonstrate its effectiveness. This work highlights the potential of machine learning in accelerating drug discovery by providing reliable predictions of molecular properties.}
+
+% \newcommand{\keywords}{\textbf{Keywords:} Deep Learning, Neural Networks, Lipophillicity, MolecularNet}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LO]{\small\authorname}
+\fancyhead[RE]{\small\titletext}
+\fancyhead[LO]{\small\faculty}
+\fancyfoot[RO,LE] {\thepage}
+
+\setcounter{page}{1} %Page number, the publisher will modify it
+
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{0pt}{0pt} % Reduce space before/after sections
+\titlespacing*{\subsection}{0pt}{0pt}{0pt} % Reduce space before/after sections
+\titlespacing*{\subsubsection}{0pt}{0pt}{0pt} % Reduce space before/after sections
+
+\usepackage{caption}
+\captionsetup{aboveskip=1pt, belowskip=1pt}
+
+
+\begin{document}
+
+\twocolumn[
+\begin{@twocolumnfalse}
+\begin{tabular}{c p{12cm}}
+% \includesvg[width=0.23\textwidth]{logo_uni_saarland.svg}
+\multirow{2}{*}{\includegraphics[scale=0.07]{Logo-Universität_des_Saarlandes.png}}&{{\Large\bf\titletext}}\\
+\vspace{0.2cm} & \vspace{0.2cm}\\
+ &{\large\authorname}\\
+\vspace{0.1cm} & \vspace{0.1cm}\\ 
+ & {\small\it Faculty of Computer Science.}\\ & {\small\abstracttext}\\
+&{\small\keywords}\\
+\end{tabular}
+\end{@twocolumnfalse}
+\vspace{-0.7cm}
+]
+
+
+\section{Introduction}
+%The accurate prediction of molecular properties is a challenge in computational chemistry . Lipophilicity, crucial to pharmacokinetics, impacts absorption, metabolism, and toxicity (ADMET) \cite{Falanga2024}. Traditional assessment methods, e.g experimental wet-lab techniques and DFT calculations \cite{ZHAO2014491}, are costly and time-consuming. Growing demand for efficient drug design, computational models predicting molecular properties from structural representations have gained traction. but, capturing the balance between hydrophobic/philic interactions remains a challenge \cite{Corsaro2021}, necessitating advanced machine learning techniques for meaningful representations.
+
+
+The accurate prediction of molecular properties is a challenge in computational chemistry . Lipophilicity, crucial to pharmacokinetics, impacts absorption, metabolism, and toxicity (ADMET) . Traditional assessment methods, e.g experimental wet-lab techniques and DFT calculations \cite{ZHAO2014491}, are costly and time-consuming. Growing demand for efficient drug design, computational models predicting molecular properties from structural representations have gained traction. but, capturing the balance between hydrophobic/philic interactions remains a challenge, necessitating advanced machine learning techniques for meaningful representations.
+
+% Several machine learning approaches have been explored for molecular property prediction.GNNs extract features from molecular graphs but face challenges due to the vast chemical space and limited labeled data \cite{Deng2023}. Unsupervised transformer-based models trained on chemical databases have emerged as better solutions, learning generalizable molecular embeddings from unlabeled datasets. MoLFormer \cite{Ross2022}, a transformer encoder with rotary positional embeddings and linear attention, processes SMILES sequences from 1.1 billion molecules, outperforming supervised and self-supervised baselines. These chemical language models has great potential for  prediction molecular property tasks.
+
+The Simplified Molecular Input Line Entry System (SMILES) \cite{Weininger1988} encodes molecular structures as linear strings, enabling efficient cheminformatics analysis. Atoms are represented by elemental symbols, with bonds denoted using "-", "=", and "\#". Branches use parentheses, while cyclic structures are marked with numerical ring closure labels.\cite{EPA_SMILES_Tutorial}.
+
+% For this project, we use the MoleculeNet Lipophilicity dataset, a benchmark in molecular machine learning \cite{C7SC02664A}. It provides experimentally measured octanol/water distribution coefficients as key indicator of lipophilicity. Large-scale datasets like MoleculeNet have advanced molecular property prediction by offering high-quality data and standardized evaluation metrics. However, challenges like data scarcity and imbalanced classifications still exist. To tackle these issues, our approach leverages pre-trained chemical language models and novel fine-tuning strategies to enhance molecular representation learning.
+
+In this work, we first provide an overview of the dataset and then describe the fine-tuning of MoLFormer-XL-both-10pct, a pre-trained transformer-based chemical language model for predicting lipophilicity from SMILES representations. We adapt MoLFormer for regression by integrating a regression head and refine its performance using influence function-based data selection. To efficiently identify high-impact training samples, we approximate the inverse Hessian-vector product (iHVP) using the LiSSA method. Additionally, we explore parameter-efficient fine-tuning techniques such as BitFit, LoRA, and iA3 to enhance generalization. By combining transformer-based molecular embeddings with advanced data selection strategies, our approach improves both accuracy and interpretability, offering a scalable and efficient alternative to traditional computational chemistry methods.
+
+\section{Dataset}
+\subsection{Overview}
+The \textbf{MoleculeNet Lipophilicity dataset} serves as a benchmark for molecular property prediction, providing molecular structures in \textbf{SMILES (Simplified Molecular Input Line Entry System)} notation along with their corresponding \textbf{lipophilicity values (logD at pH 7.4)}. Lipophilicity is a key determinant in drug design, influencing a compound’s \textbf{solubility, membrane permeability, and bioavailability}. This dataset, designed for use with the \textbf{scikit-fingerprints library}, facilitates the prediction of the \textbf{octanol/water distribution coefficient (logD) at pH 7.4}, where target values are \textbf{log-transformed and unitless} to maintain consistency in computational modeling.
+\vspace{-5pt} % Reduce space before table
+\subsection{Dataset Structure}
+
+The dataset comprises \textbf{4,200 unique molecular entries} with the following attributes:
+
+\begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \item \textbf{SMILES}: string-based of molecular structures.
+    \item \textbf{Label}: The lipophilicity value of the molecule, continuous numerical value.
+\end{itemize}
+
+% \vspace{-20pt} % Reduce space before table
+\begin{table}[H]
+\centering
+\small % Reduce font size
+\setlength{\tabcolsep}{3pt} % Reduce column spacing
+\renewcommand{\arraystretch}{1.0} % Adjust row height
+\caption{Summary Statistics}
+% \vspace{-1pt} % Reduce space between caption and table
+\resizebox{\linewidth}{!}{ % Ensure the table fits within the text width
+\begin{tabular}{lcccccccc}
+\toprule
+\textbf{Statistic} & \textbf{Count} & \textbf{Mean} & \textbf{Std Dev} & \textbf{Min} & \textbf{25\%} & \textbf{50\%} & \textbf{75\%} & \textbf{Max} \\
+\midrule
+Label Value & 4,200 & 2.186 & 1.203 & -1.500 & 1.410 & 2.360 & 3.100 & 4.500 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+% \vspace{-50pt} % Reduce space after table
+
+
+
+\subsection{Exploratory Data Analysis (EDA)}
+
+To better understand the dataset, various visualizations were created to analyze the distribution of the target variable, molecular properties, and feature representations.
+
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{pairplot_with_correlation.png}
+    \caption{Pairplot of Molecular Properties}
+    \label{fig:pairplot}
+\end{figure}
+
+The pairplot provides an overview of key molecular property relationships, red values are the correlation matrix values and diagonal plots are KDE plots. TPSA and NumHAcceptors (0.77) exhibit a strong positive correlation, indicating that molecules with higher hydrogen acceptors tend to have larger polar surface areas. MolWt and NumRotatableBonds (0.75) also correlate strongly, suggesting that larger molecules tend to be more flexible. In contrast, lipophilicity (label) shows weak correlations with MolWt (0.16), NumHDonors (-0.20), and TPSA (-0.15), implying that lipophilicity is influenced by more complex molecular interactions rather than individual descriptors.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{violin.png}
+    \caption{Violin Plot of Target Variable (Lipophilicity)}
+    \label{fig:violin}
+\end{figure}
+
+The violin plot visualizes the distribution of lipophilicity values . The widest region around 2–3 suggests that most data points are concentrated within this range. The slight right-skewed distribution aligns with findings from other visualizations, confirming that the dataset contains a higher proportion of molecules with moderate to high hydrophobicity.
+
+% \vspace{-10pt} % Reduce space before table
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{feature_length.png}
+    \caption{Distribution of Feature Lengths in SMILES}
+    \label{fig:smiles_length}
+\end{figure}
+% \vspace{-5pt} % Reduce space before table
+
+This bar chart displays the distribution of SMILES string lengths, indicating the complexity of molecular structures in the dataset. Too large and small values are uncommon in dataset distribution and this gives insight  for preprocessing, tokenization strategies, and input representation for models.
+
+\\
+
+The dataset provides a well-distributed range of lipophilicity values, with most molecules exhibiting moderate to high hydrophobicity. The absence of duplicate entries ensures a diverse molecular representation, making the dataset suitable for robust predictive modeling. The EDA highlights key characteristics, such as the correlation between molecular properties, the right-skewed nature of lipophilicity values, and the prevalence of simpler molecular structures, which have direct implications for feature engineering and model training.
+
+
+\section{Methodology}
+We use a MolFormer model in our tasks. MolFormer is a transformer model pre trained on 1.1 billion SMILES samples. Since, there is a scarcity of labeled samples, the authors trained this model in unsupervised fashion to achieve competitive advantage against Graph Neural Networks. It was trained using two strategies: Masked Language Modeling and next token prediction. We use this pretrained model for a down stream task of predicting logP values for MoleculeNet Lipophilicity dataset. We use a variety of data selection and fine tuning strategies highlighted in following sections
+
+\subsection{Transformer-Based Model - MolFormer (Task1)}
+We apply a variety of strategies to train MolFormer Model on our downstream task. In our first approach we use the dataset for supervised fine tuning of model. The dataset is split in 80\% train and 20\% test dataset. we use all of our train data in this finetuning. Secondly to improve our results and understand the structure of our dataset we employ an unsupervised pretraining strategy: Masked Language Modeling. In this strategy we mask some of the elements in the molecule and let the model try to figure it out. In short, the label in this task is the masked element(s). After unsupervised training we again train the model on our downstream task and achieve better results.
+
+\subsection{Influence Function-Based Data Selection (Task2)}
+In task2 we aid our model with another external dataset. The external dataset contains 300 data points with Molecule SMILE representation as feature and logP value as label. The dataset is quite vague and needs specialized scrutiny to use it in our task. So, to select a sample of data points which are relevant we use the influence scores and then use these select samples to train our model. 
+
+\subsubsection{Influence Score}
+Influence score tells us which data points improve the performance of model. We calculate the influence score to compute the impact of external data point on model's behavior. To calculate influence score we use \cite{koh2017understanding} approach along-with \cite{agarwal2017second} method for Hessian inverse estimation. We implement this equation to estimate the inverse hessian: 
+\begin{equation}\label{eqID}
+X_{[i,j]} = \nabla f(x_t) + \left( \mathbf{I} - \widetilde{\nabla}^2 f_{[i,j]}(x_t) \right) X_{[i,j-1]}
+\end{equation}
+We then use this to calculate influence score using the equation:
+
+\begin{equation}\label{eqID}
+    \mathcal{I}(z_i, z_{\text{test}}) = -\nabla_{\theta} L(z_{\text{test}}, \hat{\theta})^{\top} \mathbf{H}_{\hat{\theta}}^{-1} \nabla_{\theta} L(z_i, \hat{\theta})
+\end{equation}
+
+High influence scores signify that an external data point improves model performance. The top-k points with highest influence scores are selected where k is a hyper-parameter. We then include these external data points to our original training data and retrain the model on the combined data. 
+
+\subsection{Fine-Tuning Strategies (Task3)}
+This task is divided into two categories, first we explore some data selection strategies and then we experiment with different fine tuning strategies.
+\subsubsection{Data Selection Strategies}
+We test out two strategies for data selection. We start with the naive approach of random sampling where we randomly sample data from original data, this is analogous to random shuffling of data points. Secondly we use Diversity Sampling where we divide our data into multiple clusters dependent on sample size using K-Means algorithm and then we choose a random sample from each cluster. This gives us diverse dataset through which we hope to cover the whole data distribution.
+
+\subsubsection{Fine Tuning Methods}
+Since MolFormer is pretrained on 1.1 billion samples to understand sufficient chemical and structural information we fine tune this model or our down stream task. We use three SOTA techniques for our task explained in the following section:
+
+\subsubsection{BitFit \cite{zaken2021bitfit}  }
+BitFit or Bias-term Fine-tuning, fine tunes the model by only updating the bias parameters. The approach leverages the observation that bias terms, which adjust activation offsets in neural networks, can encode task-specific information without altering the core weight matrices. Biases usually contribute to a less than 1\% of parameters.  This reduction in parameters reduces the computational overhead and avoids the model overfitting to train data. This algorithm suits our task as we have a small training set and limited resources. Moreover,  this approach is quite beneficial in our case as our training data is similar to data used for pretraining, thus only an update on small subset of parameters prepares it for logP prediction.
+
+\subsubsection{LoRA \cite{hu2022lora}  }
+Low-Rank Adaptation (LoRA) fine-tunes the model by introducing trainable low-rank matrices into transformer layers, approximating weight updates through matrix decomposition. Instead of modifying the original parameters, LoRA freezes them and adds pairs of rank-decomposed matrices (e.g., \( W = W_0 + BA \), where \( B \) and \( A \) are low-rank) to each attention layer. This reduces trainable parameters by over 90\% while maintaining performance. The choice of R the rank is very important in LoRA which depends on task at hand.   
+
+\subsubsection{iA3 \cite{liu2022few}  }
+Infused Adapter by Inhibiting and Amplifying (iA3) adapts models by learning task-specific scaling vectors that controls the activations. It can upscale the relevant features and downscale unnecessary information. Thus it is able to fine tune the model without changing the original architecture. We apply this technique because we assume that the data in our down stream task is similar to the data used in pre training the model. Thus this technique learns the parameters which are used to control the original model. However, in our task the logP might depend on non linear relation ships between elements which is not captured in IA3.
+
+\section{Results}
+This section presents the findings of the study, outlining the results on MoleculeNet Lipophilicity dataset. The results are organized to address the research objectives into the score of Mean Squared Error (MSE), Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), and the R² score.
+
+% \newcolumntype{Y}{>{\centering\arraybackslash}X} % Defines centered text column
+
+\subsection{Transformer-Based Model Selection (MoLFormer)}
+\textbf{MoLFormer} was chosen here in this experiment, due to its ability to learn meaningful molecular representations from SMILES strings. The integration of \textbf{supervised fine-tuning with a regression head} enabled us to adapt MoLFormer for continuous-value prediction, making it suitable for the regression task of predicting logP values, the results are logged in the following table \ref{tab:task_1}.
+% Table 1
+\begin{table}[H]
+\centering
+\scriptsize % Further reduce font size
+\caption{Comparative Analysis of Model Performance}
+\label{tab:task_1}
+\setlength{\tabcolsep}{4pt} % Reduce column spacing
+\renewcommand{\arraystretch}{0.9} % Reduce row height
+\begin{tabular}{lcccc} % Use a standard tabular instead of tabularx
+\toprule
+\textbf{Models} & \textbf{MSE} & \textbf{RMSE} & \textbf{MAE} & \textbf{R²} \\ 
+\midrule
+MoLFormer & 0.7154 & 0.8488 & 0.6427 & 0.3158 \\
+MLM & 0.1814 & 0.1856 & 0.6903 & 0.3034 \\
+FT Regression & 0.1806 & 0.1904 & 0.5909 & 0.8004 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+    \item The fine-tuned regression model (FT Regression Model) demonstrates the strongest predictive power, achieving the lowest error values across MSE, RMSE, and MAE, while also showing the highest R² value.
+    \item The MoLFormer model, despite its sophisticated architecture, underperforms compared to the other models, suggesting that it might not be fully optimized for this particular regression task.
+    \item The MLM model (Masked Language Model) shows intermediate performance, which indicates that pre-training with molecular representations may provide benefits but is not sufficient for optimal regression performance without fine-tuning.
+\end{itemize}
+
+\subsection{Influence Function-Based Data Selection}
+This section presents the results of evaluating different configurations of Top Samples (TS) and Recursion Depth (RD) on the performance of the MoLFormer regression model. The performance is assessed using four key metrics: Mean Squared Error (MSE), Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), and R² Score. Table \ref{tab:model_performance} summarizes the results obtained for varying values of TS and RD.
+% Table 2
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Performance Metrics for Different Configurations}
+\label{tab:model_performance}
+\begin{tabularx}{\columnwidth}{lYYYY} % Ensures it fits within one column
+\toprule
+\textbf{Models} & \textbf{MSE} & \textbf{RMSE} & \textbf{MAE} & \textbf{R²} \\ 
+\midrule
+\makecell{TS = 1 \\ RD = 1} & 1.4798 & 1.2165 & 0.9865 & -0.0015 \\
+\makecell{TS = 10 \\ RD = 20} & 1.5027 & 1.2259 & 0.9708 & -0.0171 \\
+\makecell{TS = 20 \\ RD = 10} & 0.4004 & 0.6327 & 0.4665 & 0.7290 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\begin{itemize}
+    \item Increasing the recursion depth (RD) slightly worsened the model's performance. When RD was set to 20, the MSE increased, and the R² Score dropped, suggesting that deeper recursion did not yield improvements in predictive accuracy.
+    \item The configuration with TS = 20 and RD = 10 demonstrated the best performance, achieving an MSE of 0.3502, RMSE of 0.5918, MAE of 0.4321, and an R² Score of 0.7623. This indicates that a moderate recursion depth combined with a higher number of top samples can significantly enhance model performance.
+\end{itemize}
+Indicating that recursion depth does not necessarily improve model performance, and number of samples are more crucial to model performance.
+
+\subsection{Fine-Tuning Strategies Evaluation}
+We experimented with three fine-tuning techniques:
+\begin{itemize}
+    \item \textbf{BitFit} (Bias-Term Fine-Tuning) – This method yielded the best performance, achieving a significant improvement in MSE, RMSE, and $R^2$ scores, demonstrating that fine-tuning only the bias terms is an efficient and effective approach.
+    \item \textbf{LoRA} (Low-Rank Adaptation) – This method resulted in significantly worse performance, likely due to suboptimal rank selection or insufficient expressiveness in capturing molecular features.
+    \item \textbf{iA3} (Infused Adapter by Inhibiting and Amplifying) – This method showed moderate improvement but still failed to match the effectiveness of BitFit, suggesting that its scaling mechanism was not well suited to molecular property regression.
+\end{itemize}The results are logged in the following table \ref{tab:task_3}.
+% Table 3
+\begin{table}[H]
+\centering
+\scriptsize % Reduce font size
+\caption{Comparison of Finetuning Methods}
+\label{tab:task_3}
+\begin{tabularx}{\columnwidth}{lYYYY} % Ensures uniform width
+\toprule
+\textbf{FT Methods} & \textbf{MSE} & \textbf{RMSE} & \textbf{MAE} & \textbf{R²} \\ 
+\midrule
+BitFit Finetune & 0.9609 & 0.9803 & 0.7856 & 0.3496 \\
+LoRA Finetune & 5.8447 & 2.4176 & 2.1696 & -2.9559 \\
+iA3 Finetune & 2.7468 & 1.6573 & 1.4321 & -0.8591 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Model Performance and Results Analysis}
+The \textbf{final fine-tuned regression model} outperformed all baselines, achieving an \textbf{MSE of 0.1806, RMSE of 0.1904, MAE of 0.5909, and an $R^2$ score of 0.8004}. This result highlights the importance of fine-tuning transformer models with carefully selected training data and a well-optimized adaptation strategy.
+
+The failure of deeper recursion in influence function-based data selection (as seen in the \textbf{negative $R^2$ scores} when RD = 20) indicates that excessive adjustments may introduce noise rather than meaningful improvements. Similarly, the LoRA and iA3 methods underperforming suggests that these techniques may not be well suited for regression tasks on chemical datasets without additional modifications.
+
+
+\section{Conclusion}
+This study fine-tuned MoLFormer for lipophilicity prediction, leveraging transformer-based architectures. By integrating supervised fine-tuning, masked language modeling (MLM), and influence function-based data selection, we systematically enhanced model performance. Our fine-tuned model achieved the best MSE, RMSE, MAE, and R² scores.
+
+Influence function-based data selection effectively refined training samples, identifying impactful external data points. Among fine-tuning strategies, BitFit performed best, demonstrating that parameter-efficient adaptation can maintain accuracy while reducing computational costs.
+
+Challenges remain, as LoRA and iA3 underperformed, suggesting further optimization is needed. Additionally, refining influence function-based data selection could enhance effectiveness. 
+
+Overall, this work underscores the potential of combining chemical language models, fine-tuning, and advanced data selection to improve molecular property predictions.
+\newpage
+
+\bibliographystyle{plain}
+\bibliography{reference}
+
+% \begin{thebibliography}{9}
+% \bibitem{koh2017understanding} 
+% P. W. Koh and P. Liang. 
+% Understanding Black-Box Predictions via Influence Functions. 
+% \textit{International Conference on Machine Learning (ICML)}, 2017.
+
+% \bibitem{agarwal2017second}
+% N. Agarwal, B. Bullins, and E. Hazan. 
+% Second-Order Stochastic Optimization for Machine Learning in Linear Time. 
+% \textit{Journal of Machine Learning Research (JMLR)}, 2017.
+
+% \bibitem{zaken2021bitfit}
+% E. Ben Zaken, S. Ravfogel, and Y. Goldberg. 
+% BitFit: Simple Parameter-Efficient Fine-Tuning for Transformer-Based Masked Language Models. 
+% \textit{arXiv preprint arXiv:2106.10199}, 2021.
+
+% \bibitem{hu2022lora}
+% E. J. Hu, Y. Shen, P. Wallis, et al. 
+% LoRA: Low-Rank Adaptation of Large Language Models. 
+% \textit{International Conference on Learning Representations (ICLR)}, 2022.
+
+% \bibitem{liu2022few}
+% H. Liu, D. Tam, M. Muqeeth, et al. 
+% Few-Shot Parameter-Efficient Fine-Tuning is Better and Cheaper than In-Context Learning. 
+% \textit{Advances in Neural Information Processing Systems (NeurIPS)}, 2022.
+% \end{thebibliography}
+
+\end{document}

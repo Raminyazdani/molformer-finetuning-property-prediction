@@ -1,0 +1,37 @@
+TYPE	FILE	LOCATOR	BEFORE_SNIPPET	PROPOSED_CHANGE	RATIONALE	STATUS
+RENAME	Task_1.ipynb	filename	Task_1.ipynb	mlm_regression_training.ipynb	Rename to descriptive professional name (MLM + regression training)	APPLIED
+RENAME	Task_2.ipynb	filename	Task_2.ipynb	influence_based_selection.ipynb	Rename to descriptive professional name (influence functions data selection)	APPLIED
+RENAME	Task_3.ipynb	filename	Task_3.ipynb	exploration_finetuning_methods.ipynb	Rename to descriptive professional name (exploring fine-tuning strategies)	APPLIED
+RENAME	Task_1_mlm_finetuned_molformer_model	foldername	Task_1_mlm_finetuned_molformer_model	models/mlm_finetuned_molformer	Rename and reorganize into models/ directory	APPLIED
+RENAME	Task_1_mlm_finetuned_molformer_tokenizer	foldername	Task_1_mlm_finetuned_molformer_tokenizer	models/mlm_finetuned_tokenizer	Rename and reorganize into models/ directory	APPLIED
+RENAME	NNTI_Project_Report.pdf	filename	NNTI_Project_Report.pdf	archive/NNTI_Project_Report.pdf	Move to archive folder - academic artifact	APPLIED
+RENAME	NNTI Project Report	foldername	NNTI Project Report	archive/report_assets	Move to archive folder - academic artifact	APPLIED
+TRACE	README.md	line 1	# NNTI Deep Learning Project	Update to professional title	Remove course identifier	APPLIED
+TRACE	README.md	line 3	**Project Type:** University Project	Remove line	Remove academic framing	APPLIED
+TRACE	README.md	line 8	This is a comprehensive deep learning project for the Neural Networks and Their Implementation (NNTI) course	Reframe professionally	Remove course context	APPLIED
+TRACE	README.md	lines 23-33	Submission_13_-_7071538_Gopal_Mengi/ in folder structure	Update to current repo structure	Remove submission naming	APPLIED
+TRACE	README.md	line 56	cd Submission_13_-_7071538_Gopal_Mengi	Update to repository root instructions	Remove old folder reference	APPLIED
+TRACE	README.md	multiple lines	Task 1/2/3 references throughout	Update to new notebook names	Academic task language	APPLIED
+PATH	Task_1.ipynb	cell[1]	drive.mount('/content/drive/')	Comment out or wrap in try/except with note	Google Colab specific - breaks local execution	APPLIED
+PATH	Task_1.ipynb	cell[32]	/content/drive/MyDrive/University of Saarland/NNTI/Project_Files/notebooks/Task_1_molformer_regression_model.pth	./models/molformer_regression_model.pth	Replace absolute Google Drive path with relative path	APPLIED
+PATH	Task_1.ipynb	cell[36]	/content/drive/MyDrive/University of Saarland/NNTI/Project_Files/notebooks/predictions.csv	./predictions.csv	Replace absolute Google Drive path with relative path	APPLIED
+PATH	Task_1.ipynb	cell[42]	/content/drive/MyDrive/University of Saarland/NNTI/Project_Files/notebooks/Task_1_mlm_finetuned_molformer_model	./models/mlm_finetuned_molformer	Replace absolute Google Drive path with relative path	APPLIED
+PATH	Task_1.ipynb	cell[43]	/content/drive/MyDrive/University of Saarland/NNTI/Project_Files/notebooks/Task_1_mlm_finetuned_molformer_tokenizer	./models/mlm_finetuned_tokenizer	Replace absolute Google Drive path with relative path	APPLIED
+PATH	Task_1.ipynb	cell[45]	/content/drive/MyDrive/University of Saarland/NNTI/Project_Files/notebooks/Task_1_mlm_finetuned_molformer_model	./models/mlm_finetuned_molformer	Replace absolute Google Drive path with relative path	APPLIED
+PATH	Task_2.ipynb	cell[1]	drive.mount('/content/drive/')	Comment out or wrap in try/except with note	Google Colab specific - breaks local execution	APPLIED
+PATH	Task_2.ipynb	cell[4]	/content/drive/MyDrive/Colab Notebooks/Project_Files/tasks/External-Dataset_for_Task2.csv	./data/external_dataset.csv	Replace absolute Google Drive path with relative path	APPLIED
+PATH	Task_2.ipynb	cell[4]	/content/drive/MyDrive/Colab Notebooks/Project_Files/notebooks/Task_1_mlm_finetuned_molformer_model	./models/mlm_finetuned_molformer	Replace absolute Google Drive path with relative path	APPLIED
+PATH	Task_2.ipynb	cell[7]	/content/grads	./outputs/gradients	Replace absolute Colab path with relative path	APPLIED
+PATH	Task_2.ipynb	cell[8]	/content/drive/MyDrive/Colab Notebooks/Project_Files/tasks/External-Dataset_for_Task2.csv	./data/external_dataset.csv	Replace absolute Google Drive path with relative path	APPLIED
+PATH	Task_2.ipynb	cell[8]	/content/drive/MyDrive/Colab Notebooks/Project_Files/tasks/MoleculeNet_Lipophilicity.csv	./data/lipophilicity_dataset.csv	Replace absolute Google Drive path with relative path	APPLIED
+PATH	Task_2.ipynb	cell[10]	/content/grads	./outputs/gradients	Replace absolute Colab path with relative path	APPLIED
+PATH	Task_3.ipynb	cell[1]	drive.mount('/content/drive/')	Comment out or wrap in try/except with note	Google Colab specific - breaks local execution	APPLIED
+TRACE	Task_1.ipynb	cell[0]	# Task 1: Fine-tune Chemical Language Model	Update title to professional description	Academic task naming	APPLIED
+TRACE	Task_1.ipynb	cell[0]	Your task is to complete the missing code blocks below.	Remove assignment instruction language	Academic assignment language	APPLIED
+TRACE	Task_2.ipynb	cell[0]	# Task 2: Influence Function-based Data Selection	Update title to professional description	Academic task naming	APPLIED
+TRACE	Task_2.ipynb	cell[0]	References to Task1 and ../scripts/Task2.py	Update references to new naming	Academic task naming	APPLIED
+TRACE	Task_3.ipynb	cell[0]	# Task 3: Exploration of Data Selection and Fine-Tuning Methods	Update title to professional description	Academic task naming	APPLIED
+TRACE	Task_3.ipynb	cell[0]	References to ../scripts/Task3.py	Update references to new naming	Academic task naming	APPLIED
+DOC	README.md	entire file	Current structure with academic framing	Complete rewrite to portfolio-grade professional README	Must align with project_identity.md	APPLIED
+STRUCTURE	.	root directory	Flat structure with notebooks and models at root	Organize into notebooks/, models/, data/, outputs/, archive/ directories	Improve maintainability and professionalism	APPLIED
+STRUCTURE	.gitignore	lines 1-3	Only ignores 2 large model files	Expand to proper Python project .gitignore	Add common Python patterns (*.pyc, __pycache__, .ipynb_checkpoints, etc.)	APPLIED
