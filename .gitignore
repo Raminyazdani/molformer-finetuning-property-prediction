@@ -1,0 +1,3 @@
+# Offloaded large files (see LARGE_FILES.md)
+Task_1_mlm_finetuned_molformer_model/model.safetensors
+Task_1_molformer_regression_model.pth
