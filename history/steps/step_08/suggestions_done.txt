@@ -1,0 +1,35 @@
+FILE	LOCATOR	BEFORE_SNIPPET	AFTER_SNIPPET	NOTES
+.	root directory	Flat structure with files at root	Created notebooks/, models/, data/, outputs/, archive/ directories	Organized project structure for better maintainability
+Task_1.ipynb	filename	Task_1.ipynb	notebooks/mlm_regression_training.ipynb	Renamed and moved to notebooks/ - descriptive professional naming
+Task_2.ipynb	filename	Task_2.ipynb	notebooks/influence_based_selection.ipynb	Renamed and moved to notebooks/ - descriptive professional naming
+Task_3.ipynb	filename	Task_3.ipynb	notebooks/exploration_finetuning_methods.ipynb	Renamed and moved to notebooks/ - descriptive professional naming
+Task_1_mlm_finetuned_molformer_model	foldername	Task_1_mlm_finetuned_molformer_model	models/mlm_finetuned_molformer	Renamed and moved to models/ - removed Task_ prefix
+Task_1_mlm_finetuned_molformer_tokenizer	foldername	Task_1_mlm_finetuned_molformer_tokenizer	models/mlm_finetuned_tokenizer	Renamed and moved to models/ - removed Task_ prefix
+predictions.csv	filename	predictions.csv (at root)	outputs/predictions.csv	Moved to outputs/ directory for better organization
+NNTI_Project_Report.pdf	filename	NNTI_Project_Report.pdf (at root)	archive/NNTI_Project_Report.pdf	Archived academic materials
+NNTI Project Report	foldername	NNTI Project Report	archive/report_assets	Archived academic report assets
+.gitignore	lines 1-3	Only 3 lines for large model files	Comprehensive Python .gitignore with 50+ patterns	Added proper Python, Jupyter, IDE, data, and output ignores
+LARGE_FILES.md	entire file	References to Task_1_mlm_finetuned_molformer_model and old paths	Updated to models/mlm_finetuned_molformer and new structure	Updated paths to match new directory structure
+notebooks/mlm_regression_training.ipynb	cell[1]	drive.mount('/content/drive/')	# drive.mount('/content/drive/')\n# Note: Commented out for local execution	Commented out Google Colab specific code
+notebooks/mlm_regression_training.ipynb	cell[0]	# Task 1: Fine-tune Chemical Language Model	# MolFormer Fine-tuning: Masked Language Modeling and Regression	Updated title to professional description
+notebooks/mlm_regression_training.ipynb	cell[0]	Your task is to complete the missing code blocks below.	(removed)	Removed assignment instruction language
+notebooks/mlm_regression_training.ipynb	cell[32]	/content/drive/MyDrive/University of Saarland/NNTI/Project_Files/notebooks/Task_1_molformer_regression_model.pth	./models/molformer_regression_model.pth	Replaced absolute Google Drive path with relative path
+notebooks/mlm_regression_training.ipynb	cell[36]	/content/drive/MyDrive/University of Saarland/NNTI/Project_Files/notebooks/predictions.csv	./outputs/predictions.csv	Replaced absolute Google Drive path with relative path
+notebooks/mlm_regression_training.ipynb	cell[42]	/content/drive/MyDrive/University of Saarland/NNTI/Project_Files/notebooks/Task_1_mlm_finetuned_molformer_model	./models/mlm_finetuned_molformer	Replaced absolute Google Drive path with relative path
+notebooks/mlm_regression_training.ipynb	cell[43]	/content/drive/MyDrive/University of Saarland/NNTI/Project_Files/notebooks/Task_1_mlm_finetuned_molformer_tokenizer	./models/mlm_finetuned_tokenizer	Replaced absolute Google Drive path with relative path
+notebooks/mlm_regression_training.ipynb	cell[45]	/content/drive/MyDrive/University of Saarland/NNTI/Project_Files/notebooks/Task_1_mlm_finetuned_molformer_model	./models/mlm_finetuned_molformer	Replaced absolute Google Drive path with relative path
+notebooks/influence_based_selection.ipynb	cell[1]	drive.mount('/content/drive/')	# drive.mount('/content/drive/')\n# Note: Commented out for local execution	Commented out Google Colab specific code
+notebooks/influence_based_selection.ipynb	cell[0]	# Task 2: Influence Function-based Data Selection	# Influence Function-based Data Selection for Model Enhancement	Updated title to professional description
+notebooks/influence_based_selection.ipynb	cell[0]	References to Task1	References to 'the MLM regression training notebook'	Updated Task 1 references to descriptive naming
+notebooks/influence_based_selection.ipynb	cell[4]	/content/drive/MyDrive/Colab Notebooks/Project_Files/tasks/External-Dataset_for_Task2.csv	./data/external_dataset.csv	Replaced absolute Google Drive path with relative path
+notebooks/influence_based_selection.ipynb	cell[4]	/content/drive/MyDrive/Colab Notebooks/Project_Files/notebooks/Task_1_mlm_finetuned_molformer_model	./models/mlm_finetuned_molformer	Replaced absolute Google Drive path with relative path
+notebooks/influence_based_selection.ipynb	cell[6]	/content/grads	./outputs/gradients	Replaced absolute Colab path with relative path
+notebooks/influence_based_selection.ipynb	cell[8]	/content/drive/MyDrive/Colab Notebooks/Project_Files/tasks/External-Dataset_for_Task2.csv	./data/external_dataset.csv	Replaced absolute Google Drive path with relative path
+notebooks/influence_based_selection.ipynb	cell[8]	/content/drive/MyDrive/Colab Notebooks/Project_Files/tasks/MoleculeNet_Lipophilicity.csv	./data/lipophilicity_dataset.csv	Replaced absolute Google Drive path with relative path
+notebooks/influence_based_selection.ipynb	cell[10]	/content/grads	./outputs/gradients	Replaced absolute Colab path with relative path
+notebooks/exploration_finetuning_methods.ipynb	cell[1]	drive.mount('/content/drive/')	# drive.mount('/content/drive/')\n# Note: Commented out for local execution	Commented out Google Colab specific code
+notebooks/exploration_finetuning_methods.ipynb	cell[0]	# Task 3: Exploration of Data Selection and Fine-Tuning Methods	# Exploration of Data Selection and Fine-tuning Strategies	Updated title to professional description
+README.md	entire file	Academic framing (NNTI course, University Project, Submission naming)	Professional portfolio-grade README	Complete rewrite: removed academic language, added comprehensive sections, aligned with project_identity.md
+project_identity.md	entire file	Placeholder content	Comprehensive professional identity definition	Added display title, tagline, description, stack, topics, problem statement, approach, inputs/outputs
+.	root directories	data/ and outputs/ empty	Added .gitkeep files	Ensures directories are tracked in git
+suggestion.txt	entire file	Empty except header	35 issues documented with detailed locators	Complete audit findings with TYPE, FILE, LOCATOR, BEFORE, PROPOSED, RATIONALE, STATUS columns

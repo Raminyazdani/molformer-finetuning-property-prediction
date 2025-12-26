@@ -1,0 +1,33 @@
+# Python
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Virtual environments
+venv/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Data
+*.csv
+*.h5
+*.pkl
+
+# Models
+*.pth
+*.pt
+*.bin
+*.safetensors
+
+# Outputs
+outputs/
