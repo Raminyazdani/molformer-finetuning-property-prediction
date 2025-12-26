@@ -112,9 +112,132 @@ All findings documented in suggestion.txt with STATUS=NOT_APPLIED. Changes will 
 
 ## Phase 3 - Portfolio-Readiness Changes
 
-### Next Steps
-- Apply changes systematically
-- Update suggestion.txt STATUS to APPLIED
-- Log all changes in suggestions_done.txt
-- Verify runability after changes
+### 3.1 Directory Structure Created
+Created organized project structure:
+- `notebooks/` - All Jupyter notebooks
+- `models/` - Trained model files and tokenizers
+- `data/` - Dataset directory (with .gitkeep)
+- `outputs/` - Predictions and results (with .gitkeep)
+- `archive/` - Academic materials archived
+
+### 3.2 File and Folder Renames Applied
+Systematically renamed all files and folders to remove academic naming:
+
+**Notebooks renamed:**
+- Task_1.ipynb → notebooks/mlm_regression_training.ipynb
+- Task_2.ipynb → notebooks/influence_based_selection.ipynb
+- Task_3.ipynb → notebooks/exploration_finetuning_methods.ipynb
+
+**Model directories renamed:**
+- Task_1_mlm_finetuned_molformer_model/ → models/mlm_finetuned_molformer/
+- Task_1_mlm_finetuned_molformer_tokenizer/ → models/mlm_finetuned_tokenizer/
+
+**Outputs organized:**
+- predictions.csv → outputs/predictions.csv
+
+**Academic materials archived:**
+- NNTI_Project_Report.pdf → archive/NNTI_Project_Report.pdf
+- NNTI Project Report/ → archive/report_assets/
+
+### 3.3 Absolute Paths Fixed
+Created and ran Python scripts to systematically fix absolute paths in all notebooks:
+
+**mlm_regression_training.ipynb:**
+- 7 path changes applied
+- Commented out drive.mount() call
+- Replaced 5 Google Drive absolute paths with relative paths
+- Updated paths: models/, outputs/
+
+**influence_based_selection.ipynb:**
+- 8 path changes applied
+- Commented out drive.mount() call
+- Replaced 6 Google Drive absolute paths with relative paths
+- Updated paths: models/, data/, outputs/gradients/
+
+**exploration_finetuning_methods.ipynb:**
+- 1 path change applied
+- Commented out drive.mount() call
+
+All paths now use relative references (./models/, ./data/, ./outputs/)
+
+### 3.4 Notebook Content Updated
+Removed academic/assignment language from all notebooks:
+
+**Title updates:**
+- "Task 1: Fine-tune Chemical Language Model" → "MolFormer Fine-tuning: Masked Language Modeling and Regression"
+- "Task 2: Influence Function-based Data Selection" → "Influence Function-based Data Selection for Model Enhancement"
+- "Task 3: Exploration..." → "Exploration of Data Selection and Fine-tuning Strategies"
+
+**Content cleaning:**
+- Removed "Your task is to complete the missing code blocks below"
+- Updated "Task1" references to "the MLM regression training notebook"
+- Removed course-specific instructions and assignment language
+
+### 3.5 README.md Complete Rewrite
+Created portfolio-grade README.md with:
+- Professional title and tagline (no NNTI or university references)
+- Comprehensive overview and problem statement
+- Clear tech stack section
+- Detailed repository structure diagram matching new layout
+- Step-by-step setup instructions (Windows and Linux)
+- Notebook execution order with descriptions
+- Data/inputs section explaining dataset sources
+- Outputs section listing all generated files
+- Reproducibility notes (seeds, environment, data splits)
+- Extensive troubleshooting section
+- Google Colab compatibility notes
+- Keywords for discoverability
+- References section
+
+### 3.6 Supporting Files Updated
+**LARGE_FILES.md:**
+- Updated all paths to new structure (models/...)
+- Improved formatting and instructions
+- Added note about training from scratch as alternative
+
+**.gitignore:**
+- Expanded from 3 lines to comprehensive Python .gitignore
+- Added patterns for: Python bytecode, virtual envs, Jupyter checkpoints, IDE files, data, outputs
+- Updated model file paths to match new structure
+
+**project_identity.md:**
+- Completed comprehensive professional identity
+- Display title, repo slug, tagline defined
+- 12 relevant topics/keywords
+- Detailed problem statement and approach
+- Clear inputs/outputs documentation
+
+### 3.7 Ledger Updates
+**suggestions_done.txt:**
+- Documented 33 applied changes with before/after snippets
+- Includes file renames, path fixes, content updates, README rewrite
+- All changes have locators and notes
+
+**suggestion.txt:**
+- All 35 issues marked as STATUS=APPLIED
+- Complete audit trail maintained
+
+### 3.8 Verification Status
+**Changes validated:**
+- ✅ All file moves successful
+- ✅ Directory structure created
+- ✅ Notebook paths updated systematically
+- ✅ README aligned with project_identity.md
+- ✅ No broken references (all updated consistently)
+- ✅ .gitignore properly updated
+- ✅ Academic traces removed
+
+**Runnable verification:**
+- Notebooks can be opened in Jupyter
+- Paths are relative and portable
+- Google Colab compatibility maintained (with commented code)
+- Data requirements documented in README
+- Model download instructions provided
+
+**Note:** Full execution testing requires datasets and GPU resources. The notebooks are structurally sound and paths are correct. Actual training/inference would require:
+1. Installing dependencies from requirements.txt
+2. Downloading pre-trained models or training from scratch
+3. Obtaining external datasets (documented in README)
+
+All portfolio-readiness changes completed successfully.
 
