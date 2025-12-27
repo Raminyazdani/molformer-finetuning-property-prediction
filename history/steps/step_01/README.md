@@ -1,9 +1,7 @@
-# MolFormer Fine-tuning Project
+# MolFormer Fine-tuning for Molecular Property Prediction
 
-Initial project setup for molecular property prediction using chemical language models.
+A deep learning project for fine-tuning chemical language models (MolFormer) on molecular property prediction tasks.
 
-## Coming Soon
+## Overview
 
-- Fine-tuning pipeline for MolFormer
-- Molecular property prediction (lipophilicity)
-- Transfer learning demonstrations
+This project demonstrates transfer learning with pre-trained chemical language models for lipophilicity prediction.

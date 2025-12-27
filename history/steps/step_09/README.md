@@ -1,29 +1,49 @@
 # MolFormer Fine-tuning for Molecular Property Prediction
 
-Fine-tuning chemical language models (MolFormer) for molecular lipophilicity prediction using transfer learning.
+A deep learning project for fine-tuning chemical language models (MolFormer) on molecular property prediction tasks.
 
 ## Overview
 
-This project demonstrates how to leverage pre-trained chemical language models (MolFormer) and adapt them to specific molecular property prediction tasks through fine-tuning.
+This project demonstrates transfer learning with pre-trained chemical language models for lipophilicity prediction.
 
-## Project Structure
+## Repository Structure
 
 ```
 molformer-finetuning-property-prediction/
-├── notebooks/          # Jupyter notebooks for experiments
+├── notebooks/          # Jupyter notebooks
 ├── models/            # Trained models and tokenizers
+│   └── mlm_finetuend_molformer/  # Note: Contains typo in path name
 ├── data/              # Dataset directory
-├── outputs/           # Predictions and results
+├── outputs/           # Results and predictions
 ├── requirements.txt   # Python dependencies
-└── README.md          # This file
+└── README.md         # This file
 ```
 
-## Setup
+## Known Issues
 
+- Model save path contains typo: `mlm_finetuend_molformer` (should be `mlm_finetuned_molformer`)
+
+## Setup / Installation
+
+### Prerequisites
+- Python 3.8 or higher
+- CUDA-capable GPU (recommended)
+- 8GB+ RAM
+
+### Installation Steps
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Raminyazdani/molformer-finetuning-property-prediction.git
+cd molformer-finetuning-property-prediction
+```
+
+2. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Usage
-
-Coming soon: Jupyter notebooks for MLM fine-tuning and molecular property prediction.
+3. Start Jupyter Notebook:
+```bash
+jupyter notebook
+```

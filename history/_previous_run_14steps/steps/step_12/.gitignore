@@ -1,0 +1,25 @@
+
+# Python
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Data and outputs
+data/*
+!data/.gitkeep
+outputs/*
+!outputs/.gitkeep
+
+# Models (large files)
+models/mlm_finetuned_molformer/*.bin
+models/mlm_finetuned_molformer/*.safetensors
+models/mlm_finetuned_tokenizer/*.json
