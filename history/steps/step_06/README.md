@@ -1,37 +1,22 @@
 # MolFormer Fine-tuning for Molecular Property Prediction
 
-A deep learning project for fine-tuning chemical language models on molecular property prediction tasks.
+Fine-tuning chemical language models (MolFormer) for molecular lipophilicity prediction using transfer learning.
 
 ## Overview
 
-This project demonstrates fine-tuning of pre-trained chemical language models (MolFormer) for molecular property prediction, specifically focusing on lipophilicity prediction using SMILES molecular representations.
+This project demonstrates how to leverage pre-trained chemical language models (MolFormer) and adapt them to specific molecular property prediction tasks through fine-tuning.
 
 ## Project Structure
 
 ```
 molformer-finetuning-property-prediction/
-├── notebooks/          # Jupyter notebooks
+├── notebooks/          # Jupyter notebooks for experiments
 ├── models/            # Trained models and tokenizers
-├── data/              # Datasets
+├── data/              # Dataset directory
 ├── outputs/           # Predictions and results
 ├── requirements.txt   # Python dependencies
 └── README.md          # This file
 ```
-
-## Planned Features
-
-- Fine-tuning MolFormer with masked language modeling
-- Regression for molecular property prediction
-- Influence function-based data selection
-- Exploration of various fine-tuning strategies
-
-## Tech Stack
-
-- Python 3.x
-- PyTorch
-- Transformers (HuggingFace)
-- Jupyter Notebook
-- Scientific computing libraries (NumPy, Pandas, Scikit-learn)
 
 ## Setup
 
@@ -39,11 +24,10 @@ molformer-finetuning-property-prediction/
 pip install -r requirements.txt
 ```
 
-## Status
+## Usage
 
-Project structure established. Implementation in progress.
+Coming soon: Jupyter notebooks for MLM fine-tuning and molecular property prediction.
 
-## License
+## Known Issues
 
-MIT License
-
+- Model path typo in notebook needs fixing: 'mlm_finetuend_molformer' should be 'mlm_finetuned_molformer'
