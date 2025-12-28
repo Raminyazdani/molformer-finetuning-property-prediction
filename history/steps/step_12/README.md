@@ -1,90 +1,51 @@
 # MolFormer Fine-tuning for Molecular Property Prediction
 
-Fine-tuning chemical language models (MolFormer) for molecular lipophilicity prediction using transfer learning and influence-based data selection.
+A deep learning project for fine-tuning chemical language models (MolFormer) on molecular property prediction tasks.
 
 ## Overview
 
-This project demonstrates how to leverage pre-trained chemical language models (MolFormer) and adapt them to specific molecular property prediction tasks through fine-tuning. The project showcases transfer learning techniques for chemistry, influence function-based data selection, and various model adaptation strategies.
+This project demonstrates transfer learning with pre-trained chemical language models for lipophilicity prediction.
 
-## Features
-
-- Fine-tuning MolFormer using masked language modeling (MLM) and regression
-- Influence function-based data selection using LiSSA approximation
-- Exploration of alternative data selection and fine-tuning strategies
-- End-to-end pipeline from model training to prediction
-
-## Project Structure
+## Repository Structure
 
 ```
 molformer-finetuning-property-prediction/
-├── notebooks/                                    # Jupyter notebooks
-│   ├── mlm_regression_training.ipynb            # MLM + regression fine-tuning
-│   ├── influence_based_selection.ipynb          # Influence function data selection
-│   └── exploration_finetuning_methods.ipynb     # Alternative strategies
-├── models/                                       # Trained models and tokenizers
-│   ├── mlm_finetuned_molformer/                 # Fine-tuned model
-│   └── mlm_finetuned_tokenizer/                 # Fine-tuned tokenizer
-├── data/                                         # Dataset directory
-├── outputs/                                      # Predictions and results
-├── requirements.txt                              # Python dependencies
-├── LARGE_FILES.md                               # Large file management guide
-└── README.md                                    # This file
+├── notebooks/          # Jupyter notebooks
+├── models/            # Trained models and tokenizers
+│   └── mlm_finetuned_molformer/  # Fixed: Corrected path name
+├── data/              # Dataset directory
+├── outputs/           # Results and predictions
+├── requirements.txt   # Python dependencies
+└── README.md         # This file
 ```
 
-## Setup
+## Setup / Installation
 
 ### Prerequisites
-
-- Python 3.8+
+- Python 3.8 or higher
 - CUDA-capable GPU (recommended)
+- 8GB+ RAM
 
-### Installation
+### Installation Steps
 
+1. Clone the repository:
 ```bash
-# Clone repository
-git clone https://github.com/yourusername/molformer-finetuning-property-prediction.git
+git clone https://github.com/Raminyazdani/molformer-finetuning-property-prediction.git
 cd molformer-finetuning-property-prediction
+```
 
-# Install dependencies
+2. Install dependencies:
+```bash
 pip install -r requirements.txt
 ```
 
-## Usage
-
-### Notebook Execution Order
-
-1. **mlm_regression_training.ipynb**: Fine-tune MolFormer on lipophilicity dataset
-2. **influence_based_selection.ipynb**: Apply influence functions for data selection
-3. **exploration_finetuning_methods.ipynb**: Explore alternative fine-tuning strategies
-
-### Running Notebooks
-
+3. Start Jupyter Notebook:
 ```bash
 jupyter notebook
 ```
 
-Then navigate to the `notebooks/` directory and open the desired notebook.
 
-## Datasets
+## Development Notes
 
-- **Lipophilicity Dataset**: Loaded from HuggingFace MoleculeNet benchmark
-- **External Datasets**: Place in `data/` directory (see notebooks for format requirements)
-
-## Outputs
-
-The project generates:
-- Fine-tuned MolFormer models in `models/`
-- Molecular property predictions in `outputs/`
-- Training metrics and visualizations
-
-## Troubleshooting
-
-**CUDA Out of Memory**: Reduce batch size in training notebooks
-**Import Errors**: Ensure all dependencies are installed via requirements.txt
-**Dataset Loading**: Verify internet connection for HuggingFace dataset downloads
-
-## References
-
-- MolFormer: https://arxiv.org/abs/2106.09553
-- MoleculeNet: https://arxiv.org/abs/1703.00564
-- Influence Functions: https://arxiv.org/abs/1703.04730
+- Initial batch size of 32 is causing CUDA out of memory errors during training
+- Will need to reduce batch size in next commit
